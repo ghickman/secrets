@@ -80,6 +80,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 
     'django_simple_aes_field',
+    'gunicorn',
     'storages',
 
     'core',
