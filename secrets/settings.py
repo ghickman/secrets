@@ -1,7 +1,8 @@
 # Django settings for secrets project.
-import os
+from os import environ
+from os.path import abspath, dirname, join
 
-DIRNAME = os.path.abspath(os.path.dirname(__file__))
+DIRNAME = abspath(dirname(__file__))
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -31,19 +32,24 @@ SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
 
-MEDIA_ROOT = os.path.join(DIRNAME, 'client_media')
-MEDIA_URL = '/media/'
+# S3 Backend
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_ACCESS_KEY_ID = environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = environ['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = environ['AWS_STORAGE_BUCKET_NAME']
 
-STATIC_ROOT = os.path.join(DIRNAME, 'static_media')
-STATIC_URL = '/static/'
-ADMIN_MEDIA_PREFIX = '/static/admin/'
-STATICFILES_DIRS = (
-    # ('', os.path.join(DIRNAME, 'static')),
-)
+# Static Media
+MEDIA_ROOT = 'client_media'
+MEDIA_URL = '/media/'
+STATIC_ROOT = 'static_media'
+STATIC_URL = 'http://{0}.s3.amazonaws.com/'.format(AWS_STORAGE_BUCKET_NAME)
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+STATICFILES_DIRS = (join(DIRNAME, 'static'),)
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 SECRET_KEY = 'pl#%lb5=ws784n%ioe@+1f*s_1**e#g4f225*pr0&hjll6kw%q'
 
@@ -62,7 +68,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'secrets.urls'
 
-TEMPLATE_DIRS = (os.path.join(DIRNAME, 'templates'))
+TEMPLATE_DIRS = (join(DIRNAME, 'templates'))
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -74,6 +80,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 
     'django_simple_aes_field',
+    'storages',
 
     'core',
 )
