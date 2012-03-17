@@ -73,6 +73,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
 
+    'django_simple_aes_field',
+
     'core',
 )
 
