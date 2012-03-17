@@ -30,26 +30,34 @@ Add some users!
 ## API
 **Endpoint**: `/api/<application>`
 
-### Create
-Accepts: POST
-
-    {'application_name': [
-        {''},
-        {},
-    ]}
-
-### Read
-Accepts: GET
+POST to create
+GET to read
 
 ### Example
 
     import requests
 
+    endpoint = 'http://secrets.awesome.tld/api/awesome_app'
     password = 'secret'
     user = 'me'
 
-    r = requests.get('http://secrets.awesome.tld/api/awesome_app', auth=(user, password))
+    payload = {
+        'application_name': [
+            {'database_name': 'database'},
+            {'database_password': 'secret'}
+            {'AWS_SECRET_KEY_ID': 'secret'},
+            {'AWS_SECRET_ACCESS_KEY': 'secret'},
+            {'AWS_STORAGE_BUCKET': 'secret'},
+        ]
+    }
+
+    r = requests.post(endpoint, auth=(user, password), data=payload)
+    print r.status_code # 201
+
+    r = requests.get(endpoint, auth=(user, password))
+    print r.status_code # 200
     print r
+
     # {'application_name': [
     #     {'database_name': 'database'},
     #     {'database_password': 'secret'}
