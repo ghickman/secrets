@@ -1,5 +1,5 @@
 from django.db import models
-from django_simple_aes_field import AESField
+from django_simple_aes_field.fields import AESField
 
 
 class App(models.Model):
