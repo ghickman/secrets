@@ -82,6 +82,7 @@ INSTALLED_APPS = (
     'django_simple_aes_field',
     'gunicorn',
     'storages',
+    'tastypie',
 
     'core',
 )
