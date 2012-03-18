@@ -1,5 +1,4 @@
 from django.conf.urls.defaults import url
-from tastypie.fields import ForeignKey
 from tastypie.api import Api
 from tastypie.authentication import BasicAuthentication
 from tastypie.authorization import DjangoAuthorization
@@ -35,14 +34,7 @@ class AppResource(ModelResource):
         return [{'id': secret.pk, 'name': secret.name, 'secret': secret.secret}
                for secret in Secret.objects.filter(app=app_obj)]
 
-class SecretResource(ModelResource):
-    app = ForeignKey(AppResource, 'app')
-
-    class Meta:
-        queryset = Secret.objects.all()
-
 
 v1_api = Api(api_name='v1')
 v1_api.register(AppResource())
-v1_api.register(SecretResource())
 
