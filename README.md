@@ -1,5 +1,5 @@
 # Secrets
-Every application has it's own secrets these days, be it database passwords or AWS credentials, they've all got them somewhere. Secrets aims to provide a place to securely store your application's configuration options with a REST API on top.
+Every application has its own secrets these days, be it database passwords or AWS credentials, they've all got them somewhere. Secrets aims to provide a place to securely store your application's configuration options with a REST API on top.
 
 ## Deployment
 Clone the repository:
