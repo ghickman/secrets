@@ -4,3 +4,4 @@ django-simple-aes-field==0.1.3
 django-storages==1.1.4
 gunicorn==0.14.2
 psycopg2==2.4.4
+tastypie==0.9.11
