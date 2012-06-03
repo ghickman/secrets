@@ -33,7 +33,6 @@ MEDIA_ROOT = 'client_media'
 MEDIA_URL = '/media/'
 STATIC_ROOT = 'static_media'
 STATIC_URL = 'http://{0}.s3.amazonaws.com/'.format(AWS_STORAGE_BUCKET_NAME)
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 STATICFILES_DIRS = (os.path.join(DIRNAME, 'static'),)
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
