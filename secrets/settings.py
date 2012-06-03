@@ -41,7 +41,7 @@ STATICFILES_FINDERS = (
 )
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-TEMPLATE_DIRS = (join(DIRNAME, 'templates'))
+TEMPLATE_DIRS = (os.path.join(DIRNAME, 'templates'))
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
