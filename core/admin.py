@@ -15,6 +15,14 @@ class AppAdmin(admin.ModelAdmin):
 
 
 admin.site.register(App, AppAdmin)
-admin.site.unregister(Group)
-admin.site.unregister(Site)
+
+try:
+    admin.site.unregister(Group)
+except admin.sites.NotRegistered:
+    pass
+
+try:
+    admin.site.unregister(Site)
+except admin.sites.NotRegistered:
+    pass
 

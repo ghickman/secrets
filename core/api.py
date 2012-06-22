@@ -3,6 +3,7 @@ from tastypie.api import Api
 from tastypie.authentication import BasicAuthentication
 from tastypie.authorization import DjangoAuthorization
 from tastypie.resources import ModelResource
+
 from .models import App, Secret
 
 
