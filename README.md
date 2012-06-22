@@ -1,5 +1,6 @@
 # Secrets
-Every application has it's own secrets these days, be it database passwords or AWS credentials, they've all got them somewhere. Secrets aims to provide a place to securely store your application's configuration options with a REST API on top.
+
+Secrets is a Django application for hosting your private runtime settings in a central database. Settings such as SECRET_KEY or AWS login information can be kept secure, and retrived via a REST API as part of your deployment process.
 
 ## Deployment
 Clone the repository:
